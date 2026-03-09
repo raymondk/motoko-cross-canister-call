@@ -1,2 +1,5 @@
 .mops
 bin
+
+# icp-cli cache
+.icp/cache

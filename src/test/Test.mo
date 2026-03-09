@@ -1,18 +1,10 @@
-import Debug "mo:base/Debug";
-import Map "canister:map";
+import Greet "canister:greet";
 
-actor Test {
+persistent actor Test {
 
-  public func run() : async () {
-    var i = 0;
-    while (i < 16) {
-      let t = debug_show(i);
-      assert (null == (await Map.get(i)));
-      Debug.print("putting: " # debug_show(i, t));
-      await Map.put(i, t);
-      assert (?t == (await Map.get(i)));
-      i += 1;
-    };
+  public func call_greet() : async Text {
+    let r : Text = await Greet.greet("World");
+    return "Said: '" # r # "'";
   };
 
 };

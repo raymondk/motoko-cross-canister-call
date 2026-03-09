@@ -1,3 +1,19 @@
 canisters:
-  - src/map
-  - src/test
+
+  # build the map canister
+  - name: Greeter
+    build:
+      steps:
+        - type: script
+          commands:
+            -  ./bin/moc src/greet/Greet.mo  --public-metadata candid:service $(mops sources) -o "$ICP_WASM_OUTPUT_PATH"
+
+  # build the test canister
+  - name: test
+    build:
+      steps:
+        - type: script
+          commands:
+            -  ./bin/moc src/test/Test.mo  --public-metadata candid:service $(mops sources) --actor-idl did --actor-env-alias greet "PUBLIC_CANISTER_ID:Greeter"  -o "$ICP_WASM_OUTPUT_PATH" -v
+
+
