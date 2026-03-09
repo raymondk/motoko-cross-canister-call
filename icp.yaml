@@ -1,0 +1,3 @@
+canisters:
+  - src/map
+  - src/test
