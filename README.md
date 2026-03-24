@@ -19,20 +19,6 @@ icp canister call test call_greet '()'
 icp network stop
 ```
 
-## How this version works
-
-Looks like moc will look for
-```
-${ACTOR_IDL}/${ENVVARNAME}.did
-```
-The env var name is set by icp-cli as:
-```
-  PUBLIC_CANISTER_ID:<canister_name>
-```
-
-In this case, the canister name is `Greeter` so the file is at
-  `did/PUBLIC_CANISTER_ID:Greeter.did`
-
 ## Possible improvements
 
 Next improvements would be to update mops so that the `--actor-env-alias` parameters are
