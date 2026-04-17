@@ -1,11 +1,8 @@
 Testing out icp-cli + cross canister calls + canister environment variables
 
-Depends on:
-* moc from https://github.com/caffeinelabs/motoko/actions/runs/23295693053
-* moc is expected to be at `./bin/moc`
-
 Requires:
-* mops 2.5
+* mops >= 2.10 - to handle concurrent canister builds
+* moc >= 1.5 - to handle --actor-env-alias
 
 ```
 # Start the network

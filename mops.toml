@@ -3,4 +3,15 @@ core = "2.1.0"
 base = "0.16.0"
 
 [toolchain]
-moc = "./bin/moc"
+moc = "1.5.1"
+
+# The greet canister - this is the callee
+[canisters.greeter]
+main = "src/greet/Greet.mo"
+candid = "did/definition.did"
+
+# The test canister, this is the caller
+[canisters.test]
+main = "src/test/Test.mo"
+args = ["--actor-env-alias", "greet", "PUBLIC_CANISTER_ID:greeter", "did/definition.did"]
+

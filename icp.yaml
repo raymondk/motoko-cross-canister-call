@@ -1,12 +1,13 @@
 canisters:
 
   # build the map canister
-  - name: Greeter
+  - name: greeter
     build:
       steps:
         - type: script
           commands:
-            -  $(mops toolchain bin moc) src/greet/Greet.mo  --public-metadata candid:service $(mops sources) -o "$ICP_WASM_OUTPUT_PATH"
+            - mops build greeter
+            - cp .mops/.build/greeter.wasm "$ICP_WASM_OUTPUT_PATH"
 
   # build the test canister
   - name: test
@@ -14,6 +15,7 @@ canisters:
       steps:
         - type: script
           commands:
-            -  $(mops toolchain bin moc) src/test/Test.mo  --public-metadata candid:service $(mops sources) --actor-env-alias greet "PUBLIC_CANISTER_ID:Greeter" did/definition.did  -o "$ICP_WASM_OUTPUT_PATH" -v
+            - mops build test
+            - cp .mops/.build/test.wasm "$ICP_WASM_OUTPUT_PATH"
 
 
